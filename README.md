@@ -1,4 +1,5 @@
 When adding many questions the ui goes out the screen, this fork just fix it.
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7ddf19bb-0db3-420b-870d-66449fa01d35" />
 
 
 # denji-polform
