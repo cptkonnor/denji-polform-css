@@ -1,248 +1,241 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+
+:root {
+  --font-family: 'Roboto', sans-serif;
+  
+
+  --bg-color: #1c1c1e;
+  --bg-input: #2a2a2e;
+  --accent-color: #00aaff;
+  --text-primary: #f0f0f0;
+  --text-secondary: #8e8e93;
+  --border-color: #444;
+  
+  --border-radius: 6px;
+  --transition-speed: 0.25s;
+}
+
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+  font-family: var(--font-family);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 
 body.cursor-hidden {
-    cursor: none;
+  cursor: none;
 }
 
-.form-container {
-    background: linear-gradient(135deg, #007bff, #00c6ff);
-    padding: 20px;
-    padding-bottom: 40px; /* margem interna maior na parte de baixo */
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    width: calc(100vh * 16 / 9);
-    max-width: 90vw;
-    animation: fadeIn 0.3s ease-in-out;
-    color: #fff;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    position: relative;
-    z-index: 10;
 
-    display: none;
-    flex-direction: column;
+.form-container {
+  background-color: var(--bg-color);
+  width: 90vw;
+  max-width: 800px; 
+  border-radius: var(--border-radius);
+
+  border-top: 3px solid var(--accent-color);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  
+  padding: 25px 30px;
+  color: var(--text-primary);
+  
+  display: none;
+  flex-direction: column;
+
+
+  animation: popIn 0.3s ease-out;
+  transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
 .form-container.fade-out {
-    opacity: 0;
-    transform: scale(0.95);
+  opacity: 0;
+  transform: scale(0.97);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+#form-logo {
+  display: block;
+  margin: 0 auto 15px auto; 
+  max-width: 80px;
+  max-height: 80px;
 }
 
 h1 {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 20px;
-    font-size: 1.5em;
-}
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 0 25px 0; 
+  font-size: 1.2em;
+  font-weight: 500;
 
-#form-logo {
-    display: block;
-    margin: 0 auto 15px auto;
-    max-width: 80px;
-    max-height: 80px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 #questions-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    flex-grow: 1;
-    overflow-y: auto; /* cria o scroll */
-    padding-right: 5px;
-    align-items: start; /* evita buracos entre perguntas */
-    max-height: calc(80vh - 150px); /* mantém dentro do form e deixa espaço pros botões */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 25px;
+  overflow-y: auto;
+  padding-right: 10px;
+  max-height: 60vh;
 }
 
+
+#questions-container::-webkit-scrollbar {
+  width: 6px;
+}
+#questions-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+#questions-container::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 6px;
+}
+#questions-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-secondary);
+}
 
 .question label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: #f1f1f1;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: var(--text-secondary);
 }
+
 
 input,
 textarea {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    transition: border-color 0.3s, background-color 0.3s;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  color: var(--text-primary);
+
+  background-color: var(--bg-input);
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  border-radius: 4px 4px 0 0; 
+
+  transition: border-color var(--transition-speed) ease;
 }
 
 input:focus,
 textarea:focus {
-    border-color: #fff;
-    background-color: rgba(255, 255, 255, 0.2);
-    outline: none;
+  outline: none;
+  border-color: var(--accent-color);
 }
 
 textarea {
-    resize: vertical;
-    min-height: 80px;
+  resize: vertical;
+  min-height: 80px;
 }
 
+
 .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
 }
 
 button {
-    flex-grow: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, transform 0.1s;
+  flex-grow: 1;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  font-size: 0.9em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
 }
 
 button:active {
-    transform: translateY(1px);
+  transform: scale(0.98);
 }
 
+
 .btn-submit {
-    background-color: #fff;
-    color: #007bff;
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
 }
 
 .btn-submit:hover {
-    background-color: #f1f1f1;
-    color: #0056b3;
+  background-color: var(--accent-color);
+  color: var(--bg-color); 
 }
 
+
 .btn-cancel {
-    background-color: #ff4d4d;
-    color: #fff;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
 }
 
 .btn-cancel:hover {
-    background-color: #e60000;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
 }
 
+
 .hidden {
-    display: none;
+  display: none;
 }
 
 #success-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
-    z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 20;
 }
 
 #success-overlay.visible {
-    opacity: 1;
-    pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
 }
 
 #success-overlay img {
-    max-width: 90%;
-    max-height: 90%;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
 }
+
 
 @media (max-width: 768px) {
-    #questions-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: transparent; /* fundo escuro */
-    }
-
-    .form-container {
-        background: linear-gradient(135deg, #1a237e, #0d47a1); /* azul mais escuro */
-        color: #e0e0e0;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-    }
-
-    h1 {
-        color: #e0e0e0;
-    }
-
-  /*  #form-logo {
-        /* se tiver versão do logo para tema escuro, pode trocar aqui */
-    /*}
-
-    #questions-container {
-        /* mantem grid, mas ajuste cores internas 
-    }*/
-
-    .question label {
-        color: #bbbbbb;
-    }
-
-    input,
-    textarea {
-        background-color: #222;
-        border-color: #444;
-        color: #eee;
-    }
-
-    input:focus,
-    textarea:focus {
-        border-color: #90caf9;
-        background-color: #333;
-    }
-
-    .button-group button.btn-submit {
-        background-color: #90caf9;
-        color: #0d47a1;
-    }
-
-    .button-group button.btn-submit:hover {
-        background-color: #64b5f6;
-        color: #0d47a1;
-    }
-
-    .button-group button.btn-cancel {
-        background-color: #ef5350;
-        color: #fff;
-    }
-
-    .button-group button.btn-cancel:hover {
-        background-color: #b71c1c;
-    }
-
-    #success-overlay {
-        background-color: rgba(0, 0, 0, 0.85);
-    }
+  .form-container {
+    max-height: 90vh; 
+  }
+  #questions-container {
+    grid-template-columns: 1fr;
+  }
 }
