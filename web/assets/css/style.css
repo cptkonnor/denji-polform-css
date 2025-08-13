@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+body.cursor-hidden {
+    cursor: none;
+}
+
+.form-container {
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: calc(100vh * 16 / 9);
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: fadeIn 0.3s ease-in-out;
+    color: #fff;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    position: relative;
+    z-index: 10;
+
+    display: none;
+    flex-direction: column;
+}
+
+.form-container.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+#form-logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+#questions-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.question label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #f1f1f1;
+}
+
+input,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.1s;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.btn-submit {
+    background-color: #fff;
+    color: #007bff;
+}
+
+.btn-submit:hover {
+    background-color: #f1f1f1;
+    color: #0056b3;
+}
+
+.btn-cancel {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background-color: #e60000;
+}
+
+.hidden {
+    display: none;
+}
+
+#success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    z-index: 20;
+}
+
+#success-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#success-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+@media (max-width: 768px) {
+    #questions-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: transparent; /* fundo escuro */
+    }
+
+    .form-container {
+        background: linear-gradient(135deg, #1a237e, #0d47a1); /* azul mais escuro */
+        color: #e0e0e0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    }
+
+    h1 {
+        color: #e0e0e0;
+    }
+
+  /*  #form-logo {
+        /* se tiver versão do logo para tema escuro, pode trocar aqui */
+    /*}
+
+    #questions-container {
+        /* mantem grid, mas ajuste cores internas 
+    }*/
+
+    .question label {
+        color: #bbbbbb;
+    }
+
+    input,
+    textarea {
+        background-color: #222;
+        border-color: #444;
+        color: #eee;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: #90caf9;
+        background-color: #333;
+    }
+
+    .button-group button.btn-submit {
+        background-color: #90caf9;
+        color: #0d47a1;
+    }
+
+    .button-group button.btn-submit:hover {
+        background-color: #64b5f6;
+        color: #0d47a1;
+    }
+
+    .button-group button.btn-cancel {
+        background-color: #ef5350;
+        color: #fff;
+    }
+
+    .button-group button.btn-cancel:hover {
+        background-color: #b71c1c;
+    }
+
+    #success-overlay {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+}
