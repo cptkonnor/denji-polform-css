@@ -1,5 +1,7 @@
-When adding many questions the ui goes out the screen, this fork just fix it.
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/7ddf19bb-0db3-420b-870d-66449fa01d35" />
+MINIMALIST AND MORE RESPONSIVE.
+Yes, everything was made by AI, i don't care, if you don't want just pass by.
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1002f4fe-0487-4c77-8ac0-502d9a06a13f" />
+
 
 
 # denji-polform
