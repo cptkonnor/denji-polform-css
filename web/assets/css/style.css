@@ -18,11 +18,11 @@ body.cursor-hidden {
 .form-container {
     background: linear-gradient(135deg, #007bff, #00c6ff);
     padding: 20px;
+    padding-bottom: 40px; /* margem interna maior na parte de baixo */
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     width: calc(100vh * 16 / 9);
     max-width: 90vw;
-    max-height: 90vh;
     animation: fadeIn 0.3s ease-in-out;
     color: #fff;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -68,9 +68,12 @@ h1 {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* cria o scroll */
     padding-right: 5px;
+    align-items: start; /* evita buracos entre perguntas */
+    max-height: calc(80vh - 150px); /* mantém dentro do form e deixa espaço pros botões */
 }
+
 
 .question label {
     display: block;
