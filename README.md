@@ -1,3 +1,6 @@
+When adding many questions the ui goes out the screen, this fork just fix it.
+
+
 # denji-polform
 
 https://youtu.be/FK9QiueACGw
